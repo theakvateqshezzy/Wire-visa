@@ -1,3 +1,86 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+* {
+    font-family: 'poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.auth-main-screen {
+    background-image: url(/public/images/auth-bg.png);
+    background-repeat: no-repeat;
+    background-size: 60%;
+    background-position: center left;
+}
+
+ul.nav-menu li a.active {
+    background: #cde3db;
+    color: #18181b;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+    border-left-color: #04724d;
+    border-left-width: 4px;
+}
+
+ul.nav-menu li a.active i {
+    color: #04724d;
+}
+
+ul.nav-menu li a.active:hover {
+    color: #04724d;
+    background: transparent;
+}
+
+.dark ul.nav-menu li a.active {
+    background: #5d5d5d;
+    color: #fff;
+    border-left-color: #cde3db;
+}
+
+.dark ul.nav-menu li a.active i {
+    color: #cde3db;
+}
+
+.dark ul.nav-menu li a.active:hover {
+    background: transparent;
+}
+
+.semi-circle-counter .progressbar-text {
+    text-align: center;
+    font-family: Poppins !important;
+    font-size: 38px !important;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 44px;
+    top: -38px !important;
+    color: #18181b !important;
+}
+
+.semi-circle-counter p {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100%;
+}
+
+.dark .semi-circle-counter svg path:first-child {
+    stroke: #18181b;
+}
+
+.dark .semi-circle-counter .progressbar-text {
+    color: #fdfdfd !important;
+}
+.progress {
+    border-radius: 10px;
+    background-color: #f1f1f1;
+    margin-bottom: 1rem;
+    height: 1rem;
+  }
+  
+  .progress-bar {
+    border-radius: 10px;
+  }
