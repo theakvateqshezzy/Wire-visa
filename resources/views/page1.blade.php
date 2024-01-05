@@ -143,7 +143,7 @@
                                 Electronic Business Visa
                             </td>
                             <td class="text-sm text-zinc-800 dark:text-zinc-400 border-b border-zinc-200 dark:border-zinc-700 px-6 py-3 text-center"> 
-                                <div id="progressbar1" class="progressbar-type-1 block relative">
+                                <div id="progressbar1" class="progressbar-type-1 relative flex items-center">
                                     {{-- <p class="text-lg font-normal text-center text-zinc-400 dark:text-zinc-400 antialiased">Total
                                         Completed</p> --}}
                                 </div>
@@ -153,8 +153,57 @@
                     </tbody>
                 </table>
             </div>
-            <div class="w-[calc(40%-10px)] mr-[10px] flex items-center flex-wrap rounded-lg shadow-sm bg-white dark:bg-zinc-800 py-7 px-7 border border-zinc-100 dark:border-zinc-800">
-                <h3 class="text-2xl text-zinc-900 dark:text-zinc-300 font-semibold mb-6 w-full antialiased">Users</h3>
+            <div class="w-[calc(40%-10px)] mr-[10px] rounded-lg shadow-sm bg-white dark:bg-zinc-800 py-7 border border-zinc-100 dark:border-zinc-800">
+                    <div class="flex items-center justify-between px-7">
+                        <h3 class="text-2xl text-zinc-900 dark:text-zinc-300 font-semibold antialiased">Users</h3>
+                            <a class="text text-sm font-semibold text-orange-300" href="">View All</a>
+                    </div>
+                    <hr class="h-px bg-zinc-300 w-full border-0 dark:bg-gray-700 my-4">
+                    <div class="overflow-x-auto border-b border-dashed border-zinc-200 dark:border-gray-700 mt-5">
+                        <div class="flex items-center justify-between px-7 py-2">
+                            <div class="flex items-center">
+                                <img class="w-8 h-8 mr-3" src="/images/user.png" alt="user profile">
+                                <h4 class="block font-medium text-base text-zinc-900 dark:text-zinc-400" >Emelita Giraldez</h4>
+                            </div>
+                            <p class="text-sm font-normal text-zinc-400 dark:text-zinc-400">emelita@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto border-b border-dashed border-zinc-200 dark:border-gray-700 mt-5">
+                        <div class="flex items-center justify-between px-7 py-2">
+                            <div class="flex items-center">
+                                <img class="w-8 h-8 mr-3" src="/images/user.png" alt="user profile">
+                                <h4 class="block font-medium text-base text-zinc-900 dark:text-zinc-400" >Emelita Giraldez</h4>
+                            </div>
+                            <p class="text-sm font-normal text-zinc-400 dark:text-zinc-400">emelita@gmail.com</p>
+                        </div>
+                    </div>
+                    <div class="overflow-x-auto border-b border-dashed border-zinc-200 dark:border-gray-700 mt-5">
+                        <div class="flex items-center justify-between px-7 py-2">
+                            <div class="flex items-center">
+                                <img class="w-8 h-8 mr-3" src="/images/user.png" alt="user profile">
+                                <h4 class="block font-medium text-base text-zinc-900 dark:text-zinc-400" >Emelita Giraldez</h4>
+                            </div>
+                            <p class="text-sm font-normal text-zinc-400 dark:text-zinc-400">emelita@gmail.com</p>
+                        </div>
+                    </div>              
+            </div>
+        </div>
+        <div>
+            <h2 class="text-3xl font-semibold text-zinc-900 dark:text-zinc-300">Total Visas</h2>
+            <div class="mt-6 flex flex-wrap">
+                <div class="w-[calc(33%-10px)] mr-[10px] mb-[10px] rounded-lg shadow-sm bg-white dark:bg-zinc-800 py-8 px-7 border border-zinc-100 dark:border-zinc-800">
+                    <div class="flex items-start justify-between mb-5">
+                        <div>
+                            <p class="text-base font-medium text-zinc-500 dark:text-zinc-400 antialiased">Ref#: 2351</p>
+                            <h3 class="text-xl text-zinc-900 dark:text-zinc-300 font-semibold antialiased">Electronic Business Visa (Preet)</h3>
+                        </div>
+                            <a class="text-2xl text-red-500" href=""><i class="fa-regular fa-circle-question"></i></a>
+                    </div>
+                    <div id="progressbar2" class="progressbar-type-2 relative flex items-center flex-col-reverse justify-center">
+                        {{-- <p class="text-lg font-normal text-center text-zinc-400 dark:text-zinc-400 antialiased">Total
+                            Completed</p> --}}
+                    </div>
+                </div>
                 
             </div>
         </div>

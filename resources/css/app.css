@@ -84,3 +84,41 @@ ul.nav-menu li a.active:hover {
   .progress-bar {
     border-radius: 10px;
   }
+
+  .progressbar-type-1 .progressbar-text {
+    position: relative!important;
+    left: unset!important;
+    top: unset!important;
+    transform: unset!important;
+    font-family: 'poppins'!important;
+    font-size: 1rem!important;
+    border: 1px solid;
+    border-radius: 8px;
+    padding: 0.22rem 1rem!important;
+    margin-left: 1rem!important;
+    font-weight: 500!important;
+}
+
+.progressbar-type-2  .progressbar-text {
+    position: relative!important;
+    left: unset!important;
+    top: unset!important;
+    transform: unset!important;
+    display: block!important;
+    width: fit-content;
+    font-size: 1rem!important;
+    font-weight: 500!important;
+    font-family: 'poppins'!important;
+    margin-right: auto!important;
+    margin-bottom: 0.5rem!important;
+}
+
+.progressbar-type-2 .progressbar-text:before {
+    content: 'Completed';
+    position: absolute;
+    top: 0;
+    left: calc(100% + 5px);
+    font-size: 16px;
+    font-weight: 500;
+    font-family: 'poppins'!important;
+}
