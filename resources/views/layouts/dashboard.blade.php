@@ -29,6 +29,7 @@
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
+
 <body>
     <div class="h-svh" x-data="{ isSidebarExpanded: true }">
         <div class="w-full h-full flex items-center justify-start">
@@ -72,24 +73,31 @@
                     </x-slot>
                 </x-dropdown>
                 <div class="mt-10">
-                    <a href="{{route('create.lead')}}"
+                    <a href="{{ route('create.lead') }}"
                         class="w-full h-11 flex items-center justify-start text-white bg-primary-500 rounded-lg px-4 text-base font-medium dark:bg-primary-700 antialiased border-2 border-primary-500 dark:border-primary-700 hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out"><i
                             class="fa-solid fa-plus"></i><span class="ml-4">Create New</span></a>
                 </div>
                 <ul class="mt-12 nav-menu">
-                    <li class="mb-8"><a href="{{route('dashboard')}}"
-                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{(request()->route()->getName() == 'dashboard') ? 'active': ''}}"><i
+                    <li class="mb-8"><a href="{{ route('dashboard') }}"
+                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{ request()->route()->getName() == 'dashboard'? 'active': '' }}"><i
                                 class="fa-solid fa-house-chimney"></i><span class="ml-4">Dashboard</span></a></li>
-                    <li class="mb-8"><a href="{{route('track')}}"
-                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{(request()->route()->getName() == 'track') ? 'active': ''}}"><i
+                    <li class="mb-8"><a href="{{ route('track') }}"
+                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{ request()->route()->getName() == 'track'? 'active': '' }}"><i
                                 class="fa-brands fa-watchman-monitoring"></i><span class="ml-4">Track
                                 ongoing</span></a></li>
-                    <li class="mb-8"><a href="{{route('completed')}}"
-                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{(request()->route()->getName() == 'completed') ? 'active': ''}}"><i
+                    <li class="mb-8"><a href="{{ route('completed') }}"
+                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{ request()->route()->getName() == 'completed'? 'active': '' }}"><i
                                 class="fa-solid fa-file"></i><span class="ml-4">Completed Visa</span></a></li>
+                    <li class="mb-8"><a href="{{ route('users') }}"
+                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{ request()->route()->getName() == 'users'? 'active': '' }}"><i
+                                class="fa-solid fa-users"></i><span class="ml-4">Users</span></a></li>
+                    <li class="mb-8"><a href="{{ route('visas') }}"
+                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{ request()->route()->getName() == 'visas'? 'active': '' }}"><i
+                                class="fa-solid fa-file"></i><span class="ml-4">Visas</span></a></li>
                     <li class="mb-8"><a href="#"
-                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{(request()->route()->getName() == 'setting') ? 'active': ''}}"><i
+                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{ request()->route()->getName() == 'setting'? 'active': '' }}"><i
                                 class="fa-solid fa-gear"></i><span class="ml-4">Settings</span></a></li>
+
 
                 </ul>
                 <img src="/images/logo-green.png" alt=""
@@ -98,9 +106,9 @@
             <div class="content-wrapper h-full w-full">
                 <header
                     class="header bg-white h-20 h- w-full p-5 border-b border-zinc-300 relative dark:bg-zinc-800 dark:border-zinc-800">
-                    <button class="p-2 -ml-2 mr-2" @click="isSidebarExpanded = !isSidebarExpanded">
+                    <button class="p-2 -ml-2 mr-2 dark:fill-white" @click="isSidebarExpanded = !isSidebarExpanded">
                         <svg viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" fill="none"
-                            stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 transform"
+                            stroke-linecap="round" stroke-linejoin="round" class="h-6 w-6 transform dark:invert"
                             :class="isSidebarExpanded ? 'rotate-180' : 'rotate-0'">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <line x1="4" y1="6" x2="14" y2="6" />
@@ -110,12 +118,12 @@
                     </button>
                     <button id="theme-toggle" type="button"
                         class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5 absolute right-0">
-                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg id="theme-toggle-dark-icon" class="hidden w-5 h-5" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"></path>
                         </svg>
-                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg">
+                        <svg id="theme-toggle-light-icon" class="hidden w-5 h-5" fill="currentColor"
+                            viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
                             <path
                                 d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
                                 fill-rule="evenodd" clip-rule="evenodd"></path>
@@ -129,7 +137,8 @@
                 <footer
                     class="footer bg-white h-20 w-full p-5 border-t border-zinc-300 dark:bg-zinc-800 dark:border-zinc-800 flex items-center justify-center">
                     <p class="text-base font-normal text-zinc-500 dark:text-zinc-400 text-center">Copyright 2023 ©
-                        <span class="text-primary-500">Visawire</span></p>
+                        <span class="text-primary-500">Visawire</span>
+                    </p>
                 </footer>
             </div>
         </div>
@@ -302,4 +311,5 @@
 
     bar.animate(0.3);
 </script>
+
 </html>

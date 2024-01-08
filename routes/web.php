@@ -44,4 +44,11 @@ Route::get('/visa-completed', function (){
     return view('visa-completed');
 })->name('completed');
 
+Route::get('/admin-user', function (){
+    return view('admin-user');
+})->name('users');
+
+Route::get('/admin-visa', function (){
+    return view('admin-visa');
+})->name('visas');
 require __DIR__.'/auth.php';

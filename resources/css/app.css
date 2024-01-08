@@ -122,3 +122,7 @@ ul.nav-menu li a.active:hover {
     font-weight: 500;
     font-family: 'poppins'!important;
 }
+
+.admin-users-list tr:last-child td {
+    border: 0;
+}

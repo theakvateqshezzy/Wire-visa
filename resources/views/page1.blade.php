@@ -128,7 +128,7 @@
                                 </div>
                             </th>
                             <th scope="col" class="p-0 text-start text-xs font-medium text-gray-500 dark:text-gray-400">
-                                <div class="px-6 py-4 bg-zinc-100 dark:bg-zinc-700 mb-4 block">
+                                <div class="px-6 py-4 bg-zinc-100 dark:bg-zinc-700 mb-4 block rounded-r-lg">
                                     Progress
                                 </div>
                             </th>                            
