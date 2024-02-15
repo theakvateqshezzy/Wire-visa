@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('role_abilities', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('role_id');
+            $table->unsignedBigInteger('dashboard_ability_id');
             $table->timestamps();
         });
     }

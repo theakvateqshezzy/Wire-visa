@@ -13,6 +13,12 @@ return new class extends Migration
     {
         Schema::create('visa_request_criterias', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('nationality_country_id');
+            $table->unsignedBigInteger('from_city_id');
+            $table->unsignedBigInteger('to_city_id');
+            $table->unsignedBigInteger('visa_type_id');
+            $table->integer('length_start');
+            $table->integer('length_end');            
             $table->timestamps();
         });
     }

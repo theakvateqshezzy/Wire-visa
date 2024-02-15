@@ -13,6 +13,13 @@ return new class extends Migration
     {
         Schema::create('visa_requests', function (Blueprint $table) {
             $table->id();
+            $table->string('uid');
+            $table->dateTime('approved_at');
+            $table->dateTime('rejected_at');
+            $table->unsignedBigInteger('parent_id');
+            $table->unsignedBigInteger('created_by');
+            $table->unsignedBigInteger('assigned_to');
+            $table->unsignedBigInteger('visa_request_criteria_id');
             $table->timestamps();
         });
     }

@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('user_purchases', function (Blueprint $table) {
             $table->id();
+            $table->string('transaction_id');
+            $table->integer('count');
+            $table->unsignedBigInteger('user_id');
+            $table->json('meta');
             $table->timestamps();
         });
     }

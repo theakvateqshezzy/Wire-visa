@@ -15,4 +15,20 @@ class VisaRequestQuery extends Model
         'visa_request_id',
     ];
 
+    protected $casts = [
+        'is_resolved' => 'boolean'
+    ];
+
+
+    public function document()
+    {
+        return $this->belongsTo(VisaRequestDocument::class);
+    }
+
+    public function visaRequest()
+    {
+        return $this->belongsTo(VisaRequest::class);
+    }
+
+
 }

@@ -11,6 +11,10 @@ class DashboardAbility extends Model
         'is_active',
     ]; 
 
+    protected $casts = [
+        'is_acitve' => 'boolean'
+    ];
+
     protected $hidden = [
         'pivot'
     ];

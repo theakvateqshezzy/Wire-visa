@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('product_abilities', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('ability_id');
+            $table->unsignedBigInteger('package_id');
             $table->timestamps();
         });
     }

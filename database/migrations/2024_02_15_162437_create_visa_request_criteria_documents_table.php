@@ -13,6 +13,10 @@ return new class extends Migration
     {
         Schema::create('visa_request_criteria_documents', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->boolean('is_optional')->default(false);
+            $table->unsignedBigInteger('visa_request_criteria_id');
             $table->timestamps();
         });
     }
