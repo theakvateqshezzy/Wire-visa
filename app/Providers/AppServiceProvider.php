@@ -11,7 +11,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        //
+        env('PUBLIC_PATH') ? $this->app->usePublicPath(env('PUBLIC_PATH')) : '';
     }
 
     /**
