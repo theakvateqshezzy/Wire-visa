@@ -3,63 +3,133 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Http\Helpers\Flash;
+use App\Models\User;
+use Carbon\Carbon;
+use Exception;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class UserController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
     public function index()
     {
-        //
+        $users = User::users()->paginate(10);
+
+        return view('dashboard.users.index', compact('users'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
+    public function store(ClientStoreRequest $request){
+        try{
+
+            DB::beginTransaction();
+
+            $password = Str::password(8);
+            
+            $user = User::create([
+                'name' => ucfirst(explode('@', $request->email)[0]),
+                'email' => $request->email,
+                // 'password' => bcrypt($password),
+                'password' => bcrypt('123123'),
+                'email_verified_at' => Carbon::now()
+            ]);
+
+            $user->details()->create([
+                'invited_by' => Auth::user()->id,
+            ]);
+
+            //TODO: SEND PASSWORD
+                
+            DB::commit();
+
+        return redirect()->route('users.index');
+
+        }catch(Exception $e){
+
+            DB::rollBack();
+            
+            Flash::failure("Something went wrong");
+            
+            return redirect()->back();
+
+        }
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
+    public function update(Request $request)
     {
-        //
+        try{
+            
+
+            DB::beginTransaction();
+
+            $user = User::find($request->user);
+
+            if(!$user){
+
+                Flash::failure("User not found");
+                return redirect()->route('users.index');
+            }
+
+
+            $user->update([
+                'name' => $request->name,
+                
+            ]);
+
+            $user->details->update([
+                'phone' => $request->phone
+            ]);
+
+            DB::commit();
+
+            Flash::success("User updated successfully");
+
+            return redirect()->route('users.index');
+
+        }catch(Exception $e){
+
+            DB::rollBack();
+            
+            Flash::failure("Something went wrong");
+            
+            return redirect()->back();
+
+        }
     }
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(string $id)
+    public function destroy(Request $request)
     {
-        //
-    }
+        try{
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
-    {
-        //
-    }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, string $id)
-    {
-        //
-    }
+            DB::beginTransaction();
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(string $id)
-    {
-        //
+            $user = User::find($request->user);
+
+            if(!$user){
+
+                Flash::failure("User not found");
+                return redirect()->route('users.index');
+            }
+
+            $user->delete();
+
+            DB::commit();
+
+            Flash::success("User removed successfully");
+
+            return redirect()->route('users.index');
+
+        }catch(Exception $e){
+
+            DB::rollBack();
+            
+            Flash::failure("Something went wrong");
+            
+            return redirect()->back();;
+                    
+            }
     }
 }

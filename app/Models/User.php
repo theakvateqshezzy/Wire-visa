@@ -3,6 +3,8 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+
+use App\Enums\RoleType;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -42,4 +44,14 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'password' => 'hashed',
     ];
+
+    public function scopeAdmins($query)
+    {
+        return $query->where('role_id', RoleType::ADMIN->value); 
+    }
+
+    public function scopeUsers($query)
+    {
+        return $query->where('role_id', RoleType::USER->value); 
+    }
 }
