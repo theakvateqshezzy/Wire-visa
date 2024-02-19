@@ -16,15 +16,11 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
+    <link rel="stylesheet" href="{{asset('css/izitoast.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
         integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.js"
-        integrity="sha512-x6oUSDeai/Inb/9HFvbrBtDOnLvFSd37f6j2tKRePhFBLYAezejnN5xgG52M20rnFN66+6EWwuFwAneEXyq6oA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.0/progressbar.min.js"
-        integrity="sha512-Hivnqo7w/SRPjJY3qvD8Y1CaKbmrmqDjZKYgIFyIag/2bOye6Qk1W99wZYObixwzYoZQeKWPqZ2ifus82GE07A=="
-        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/css/select2.min.css" rel="stylesheet" />
 
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -81,8 +77,8 @@
                     <li class="mb-8"><a href="{{ route('dashboard') }}"
                             class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{ request()->route()->getName() == 'dashboard'? 'active': '' }}"><i
                                 class="fa-solid fa-house-chimney"></i><span class="ml-4">Dashboard</span></a></li>
-                    <li class="mb-8"><a href="{{ route('track') }}"
-                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{ request()->route()->getName() == 'track'? 'active': '' }}"><i
+                    <li class="mb-8"><a href="{{ route('visa-requests.index') }}"
+                            class="w-full h-11 flex items-center justify-start text-zinc-500 dark:text-zinc-300 bg-transparent rounded-lg px-4 text-base font-medium dark:bg-transparent antialiased border-2 border-transparent hover:border-primary-400 dark:border-transparent hover:bg-transparent hover:text-primary-500 dark:hover:text-white transition-all duration-300 ease-in-out {{ request()->route()->getName() == 'visa-requests.index'? 'active': '' }}"><i
                                 class="fa-brands fa-watchman-monitoring"></i><span class="ml-4">Track
                                 ongoing</span></a></li>
                     <li class="mb-8"><a href="{{ route('completed') }}"
@@ -148,6 +144,18 @@
 
 </body>
 
+<script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.13.3/cdn.js"
+integrity="sha512-x6oUSDeai/Inb/9HFvbrBtDOnLvFSd37f6j2tKRePhFBLYAezejnN5xgG52M20rnFN66+6EWwuFwAneEXyq6oA=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/progressbar.js/1.0.0/progressbar.min.js"
+integrity="sha512-Hivnqo7w/SRPjJY3qvD8Y1CaKbmrmqDjZKYgIFyIag/2bOye6Qk1W99wZYObixwzYoZQeKWPqZ2ifus82GE07A=="
+crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-rc.0/dist/js/select2.min.js"></script>
+<script src="{{asset('js/izitoast.js')}}"></script>
+
+
+
 <script>
     var themeToggleDarkIcon = document.getElementById('theme-toggle-dark-icon');
     var themeToggleLightIcon = document.getElementById('theme-toggle-light-icon');
@@ -191,125 +199,53 @@
 
     });
 </script>
+
+@if(Session::has('status'))
+    @if(Session::get('status'))
+        <script>
+            iziToast.show({
+                title: 'Success :',
+                message: '{{Session::get("message")}}',
+                color: "green"
+            });
+        </script>
+    @else
+        <script>
+            iziToast.show({
+                title: 'Error :',
+                message: '{{Session::get("message")}}',
+                color: "red"
+            });
+        </script>
+    @endif
+@endif
+
+@if(Session::has('failure'))
+  <script>
+      iziToast.show({
+          title: 'Error :',
+          message: '{{Session::get("failure")}}',
+          color: "red"
+      });
+  </script>
+@endif
+<!-- END FAILURE FLASH -->
+
+<!-- VALIDATOR FLASH -->
+@if($errors->any())
 <script>
-    // progressbar.js@1.0.0 version is used
-    // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
-
-    var bar = new ProgressBar.SemiCircle(container, {
-        strokeWidth: 7,
-        color: '#E58B3D',
-        trailColor: '#CEDEEC',
-        trailWidth: 7,
-        easing: 'easeInOut',
-        duration: 1400,
-        svgStyle: null,
-        text: {
-            value: '',
-            alignToBottom: false
-        },
-        from: {
-            color: '#facc15'
-        },
-        to: {
-            color: '#04724D'
-        },
-        // Set default step function for all animate calls
-        step: (state, bar) => {
-            bar.path.setAttribute('stroke', state.color);
-            var value = Math.round(bar.value() * 100);
-            if (value === 0) {
-                bar.setText('');
-            } else {
-                bar.setText(value + '%');
-            }
-
-            bar.text.style.color = state.color;
-        }
+  @foreach ($errors->all() as $error)
+    iziToast.show({
+        title: 'Error :',
+        message: '{{$error}}',
+        color: "red"
     });
-    bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-    bar.text.style.fontSize = '2rem';
-
-    bar.animate(0.8);
+  @endforeach
 </script>
-<script>
-    // progressbar.js@1.0.0 version is used
-    // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
+@endif
 
-    var bar = new ProgressBar.Line(progressbar1, {
-        strokeWidth: 6,
-        color: '#E58B3D',
-        trailColor: '#F7F8FA',
-        trailWidth: 6,
-        easing: 'easeInOut',
-        duration: 1400,
-        svgStyle: null,
-        text: {
-            value: '',
-            alignToBottom: false
-        },
-        from: {
-            color: '#dc2626'
-        },
-        to: {
-            color: '#04724d'
-        },
-        // Set default step function for all animate calls
-        step: (state, bar) => {
-            bar.path.setAttribute('stroke', state.color);
-            var value = Math.round(bar.value() * 100);
-            if (value === 0) {
-                bar.setText('');
-            } else {
-                bar.setText(value + '%');
-            }
+@yield('js')
 
-            bar.text.style.color = state.color;
-        }
-    });
-    bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-    bar.text.style.fontSize = '2rem';
-
-    bar.animate(0.3);
-</script>
-<script>
-    // progressbar.js@1.0.0 version is used
-    // Docs: http://progressbarjs.readthedocs.org/en/1.0.0/
-
-    var bar = new ProgressBar.Line(progressbar2, {
-        strokeWidth: 2,
-        color: '#E58B3D',
-        trailColor: '#F7F8FA',
-        trailWidth: 2,
-        easing: 'easeInOut',
-        duration: 1400,
-        svgStyle: null,
-        text: {
-            value: '',
-            alignToBottom: false
-        },
-        from: {
-            color: '#dc2626'
-        },
-        to: {
-            color: '#04724d'
-        },
-        // Set default step function for all animate calls
-        step: (state, bar) => {
-            bar.path.setAttribute('stroke', state.color);
-            var value = Math.round(bar.value() * 100);
-            if (value === 0) {
-                bar.setText('');
-            } else {
-                bar.setText(value + '%');
-            }
-
-            bar.text.style.color = state.color;
-        }
-    });
-    bar.text.style.fontFamily = '"Raleway", Helvetica, sans-serif';
-    bar.text.style.fontSize = '2rem';
-
-    bar.animate(0.3);
-</script>
+@stack('js')
 
 </html>

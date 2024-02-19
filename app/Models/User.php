@@ -54,4 +54,11 @@ class User extends Authenticatable
     {
         return $query->where('role_id', RoleType::USER->value); 
     }
+
+    //-- RELATIONS
+    public function details()
+    {
+        return $this->hasOne(UserDetail::class);
+    }
+    
 }

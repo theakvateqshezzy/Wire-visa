@@ -13,4 +13,9 @@ class VisaType extends Model
         'is_active',
     ];
 
+    public function scopeActive($query)
+    {
+        return $query->where('is_active', true);
+    }
+
 }

@@ -11,6 +11,7 @@ class VisaRequestCriteriaDocument extends Model
         'name',
         'description',
         'is_optional',
+        'file_id',
         'visa_request_criteria_id',
     ];
 
@@ -21,6 +22,11 @@ class VisaRequestCriteriaDocument extends Model
     public function criteria()
     {
         return $this->belongsTo(VisaRequestCriteria::class);
+    }
+
+    public function file()
+    {
+        return $this->hasOne(File::class);
     }
 
 

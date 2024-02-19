@@ -13,6 +13,8 @@ return new class extends Migration
     {
         Schema::create('visa_request_documents', function (Blueprint $table) {
             $table->id();
+            $table->dateTime('rejected_at')->nullable();
+            $table->dateTime('approved_at')->nullable();
             $table->unsignedBigInteger('file_id');
             $table->unsignedBigInteger('visa_request_criteria_document_id');
             $table->unsignedBigInteger('visa_request_id');

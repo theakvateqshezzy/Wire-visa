@@ -42,5 +42,10 @@ class VisaRequestCriteria extends Model
         return $this->hasMany(VisaRequestCriteriaDocument::class);
     }
 
+    public function requests()
+    {
+        return $this->hasMany(VisaRequest::class);
+    }
+
 
 }

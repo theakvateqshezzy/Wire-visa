@@ -9,8 +9,10 @@ class VisaRequest extends Model
     
     protected $fillable = [
         'uid',
-        'approved_at',
+        'label',
+        'submitted_at',
         'rejected_at',
+        'approved_at',
         'parent_id',
         'created_by',
         'assigned_to',
@@ -35,7 +37,7 @@ class VisaRequest extends Model
 
     public function criteria()
     {
-        return $this->belongsTo(VisaRequestCriteria::class);
+        return $this->belongsTo(VisaRequestCriteria::class, 'visa_request_criteria_id', 'id');
     }
 
     public function documents()
@@ -47,5 +49,26 @@ class VisaRequest extends Model
     {
         return $this->hasMany(VisaRequestQuery::class);
     }
+
+    public function scopeSubmitted($query)
+    {
+        return $query->whereNull('rejected_at')->whereNull('approved_at')->whereNotNull('submitted_at');
+    }
+
+    public function scopeCompleted($query)
+    {
+        return $query->whereNotNull('rejected_at')->OrWhereNotNull('approved_at');
+    }
+
+    public function scopeApproved($query)
+    {
+        return $query->whereNotNull('approved_at');
+    }
+
+    public function scopeRejected($query)
+    {
+        return $query->whereNotNull('rejected_at');
+    }
+
     
 }

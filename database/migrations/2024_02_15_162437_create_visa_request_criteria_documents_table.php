@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->boolean('is_optional')->default(false);
+            $table->unsignedBigInteger('file_id');
             $table->unsignedBigInteger('visa_request_criteria_id');
             $table->timestamps();
         });
